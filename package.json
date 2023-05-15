@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "start-host": "nx serve main-host --open",
-    "start-angular": "nx serve angular-remote --open",
+    "start-react": "nx serve remote-app",
+    "build-react": "nx build remote-app",
+    "start-angular": "nx serve angular-remote",
+    "build-angular": "nx build angular-remote",
     "build": "nx build main-host",
     "test": "nx test"
   },

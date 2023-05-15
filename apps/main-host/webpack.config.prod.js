@@ -24,8 +24,8 @@ const prodConfig = {
    * ]
    */
   remotes: [
-    ['remote-app', 'http://localhost:4201/'],
-    ['angular-remote', 'http://localhost:4202/'],
+    ['remote-app', '../remote-app'],
+    ['angular-remote', '../angular-remote/remoteEntry.mjs'],
   ],
 };
 

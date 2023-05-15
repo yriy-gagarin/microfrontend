@@ -52,6 +52,7 @@
       "executor": "@nx/react:module-federation-dev-server",
       "defaultConfiguration": "development",
       "options": {
+        "baseHref": "/",
         "buildTarget": "remote-app:build",
         "hmr": true,
         "port": 4201

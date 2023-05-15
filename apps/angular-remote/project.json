@@ -58,8 +58,8 @@
     "serve": {
       "executor": "@nx/angular:webpack-dev-server",
       "options": {
-        "port": 4201,
-        "publicHost": "http://localhost:4201"
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
       },
       "configurations": {
         "production": {
@@ -106,7 +106,7 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "angular-remote:build",
-        "port": 4201,
+        "port": 4202,
         "watch": false
       },
       "configurations": {
