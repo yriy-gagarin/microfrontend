@@ -2,10 +2,11 @@
 import styles from './app.module.scss';
 import * as React from "react";
 
-export function App() {
+export function App(props: {message?:string}) {
+  const { message } = props;
   return (
-    <div>
-      <h1 style={{border:'1px solid gray', padding:'10px'}}>
+    <div style={{border:'1px solid gray', padding:'10px', margin:'5px 0'}}>
+      <h1>
         <span>Remote приложение на react</span>
         <img
           style={{padding:'0 10px'}}
@@ -13,6 +14,8 @@ export function App() {
           alt=""
           height="25"/>
       </h1>
+      <input type={"number"} defaultValue={1}/>
+      {message && <span style={{paddingLeft: '10px'}}>Сообщение от host: {message}</span>}
     </div>
   );
 }

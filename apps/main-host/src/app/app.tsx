@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {bootstrapRemoteApp} from 'angular-remote/Module';
-import {useEffect, useRef} from "react";
+import {ChangeEvent, MouseEvent, useCallback, useEffect, useRef, useState} from "react";
 
 import { Link, Route, Routes } from 'react-router-dom';
 
@@ -26,29 +26,29 @@ const RemoteAngularApp = () => {
 
 export function App() {
 
+  const [additionalAppFlag, setAdditionalAppFlag] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const addRemoteReactAppHandler = useCallback(() =>{
+    setAdditionalAppFlag(!additionalAppFlag);
+  },[additionalAppFlag, setAdditionalAppFlag])
+
+
+  const setMessageHandler = useCallback((event:ChangeEvent) =>{
+    const value = (event.target as HTMLInputElement).value;
+    setMessage(value);
+  }, [setMessage]);
+
   return (
     <>
       <React.Suspense fallback={null}>
         <h1>Основное host приложение</h1>
         <RemoteReactApp />
-
-        {/*      <ul>
-        <li>
-          <Link to="./">Home</Link>
-        </li>
-        <li>
-          <Link to="./remote-app">RemoteApp</Link>
-        </li>
-        <li>
-          <Link to="./angular-remote-app">Angular RemoteApp</Link>
-        </li>
-      </ul>*/}
-        {/*      <Routes>
-        <Route path="/remote-app" element={<RemoteReactApp />} />
-        <Route path="/angular-remote-app" element={<>todo</>} />
-      </Routes>*/}
       </React.Suspense>
       <RemoteAngularApp/>
+      <button onClick={addRemoteReactAppHandler}>{additionalAppFlag ? '- Удалить':'+ Добавать'} remote приложение react</button>
+      <span style={{paddingLeft: '10px'}}>Сообщение для remote: <input type="text" onChange={setMessageHandler}/></span>
+      {additionalAppFlag && <RemoteReactApp message={message}/>}
     </>
   );
 }
